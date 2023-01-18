@@ -6,7 +6,9 @@ import Search from "../components/Search";
 
 function Home() {
   const { data: books, isLoading } = useQuery("books", () =>
-    fetch("http://localhost:5050/books").then((res) => res.json())
+    fetch("https://raintree-books-server.onrender.com/books").then((res) =>
+      res.json()
+    )
   );
   // console.log(books);
   if (isLoading) {
