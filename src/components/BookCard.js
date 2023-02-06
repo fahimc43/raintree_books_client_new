@@ -15,7 +15,7 @@ function BookCard({ book }) {
   };
 
   const handleProduct = () => {
-    fetch("http://localhost:5050/ordered-book", {
+    fetch("https://raintree-books-server.onrender.com/ordered-book", {
       method: "POST",
       headers: {
         "content-type": "application/json",

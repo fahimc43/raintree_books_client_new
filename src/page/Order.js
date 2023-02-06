@@ -5,7 +5,9 @@ import OrderedRow from "../components/OrderedRow";
 
 function Order() {
   const { data: orders, isLoading } = useQuery("orders", () =>
-    fetch("http://localhost:5050/orders").then((res) => res.json())
+    fetch("https://raintree-books-server.onrender.com/orders").then((res) =>
+      res.json()
+    )
   );
   // console.log(books);
   if (isLoading) {
