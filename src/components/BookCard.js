@@ -11,11 +11,11 @@ function BookCard({ book }) {
     bookPrice,
     imageUrl,
     quantity: 1,
-    sum: bookPrice,
+    sum: Math.floor(bookPrice),
   };
 
   const handleProduct = () => {
-    fetch("https://raintree-books-server.onrender.com/ordered-book", {
+    fetch("http://localhost:5050/ordered-book", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -30,7 +30,6 @@ function BookCard({ book }) {
           const count = orderedBook.quantity + data.exists.quantity;
           toast.info(`Same book ${count} Times add your Order page`);
         }
-        console.log(data);
       });
   };
   return (

@@ -5,9 +5,7 @@ import OrderedRow from "../components/OrderedRow";
 
 function Order() {
   const { data: orders, isLoading } = useQuery("orders", () =>
-    fetch("https://raintree-books-server.onrender.com/orders").then((res) =>
-      res.json()
-    )
+    fetch("http://localhost:5050/orders").then((res) => res.json())
   );
   // console.log(books);
   if (isLoading) {
@@ -15,6 +13,19 @@ function Order() {
   }
 
   console.log("orders", orders);
+
+  const totalValue = orders?.map((order) => {
+    const each = order.sum;
+    return each;
+  });
+
+  const total = totalValue.reduce(getSum, 0);
+  function getSum(total, num) {
+    return total + Math.round(num);
+  }
+
+  console.log("totalValue", total);
+
   return (
     <div className="md:container md:mx-auto mt-8">
       <div className="flex justify-center md:justify-start md:ml-20 ">
@@ -48,7 +59,7 @@ function Order() {
                 <th>Total</th>
                 <th></th>
                 <th></th>
-                <th>$ 915</th>
+                <th>$ {total}</th>
               </tr>
             </tfoot>
           </table>
