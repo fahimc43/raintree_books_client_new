@@ -21,7 +21,7 @@ function Order() {
     return each;
   });
 
-  const total = totalValue.reduce(getSum, 0);
+  const total = totalValue?.reduce(getSum, 0);
   function getSum(total, num) {
     return total + Math.round(num);
   }
